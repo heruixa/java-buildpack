@@ -28,6 +28,8 @@ module JavaBuildpack::Framework
     end
 
     def release
+	  java_opts   = @droplet.java_opts
+	  java_opts.add_system_property('java.library.path', "'#{application_name}'")
     end
 
     protected
