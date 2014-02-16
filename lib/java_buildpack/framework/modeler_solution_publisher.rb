@@ -33,6 +33,7 @@ module JavaBuildpack::Framework
     protected
 
     def supports?
+	  true
     end
 
   end
