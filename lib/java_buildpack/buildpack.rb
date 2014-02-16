@@ -77,6 +77,7 @@ module JavaBuildpack
       component_detection(@jres).first.release
       component_detection(@frameworks).each { |framework| framework.release }
       command = container.release
+	  print "Tomcat run command: #{command}"
 
       payload = {
           'addons'                => [],
