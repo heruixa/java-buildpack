@@ -21,7 +21,7 @@ require 'java_buildpack/framework'
 module JavaBuildpack::Framework
 
   # Encapsulates the functionality for enabling zero-touch AppDynamics support.
-  class MSP < JavaBuildpack::Component::VersionedDependencyComponent
+  class ModelerSolutionPublisher < JavaBuildpack::Component::VersionedDependencyComponent
 
     def compile
       download_zip false
