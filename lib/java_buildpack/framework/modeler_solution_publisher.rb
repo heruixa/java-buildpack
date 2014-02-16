@@ -29,13 +29,13 @@ module JavaBuildpack::Framework
 
     def release
 	  java_opts   = @droplet.java_opts
-	  java_opts.add_system_property('java.library.path', "'#{application_name}'")
+	  java_opts.add_system_property('java.library.path', "$PWD/#{(@droplet.sandbox + 'bin').relative_path_from(@droplet.root)}")
     end
 
     protected
 
     def supports?
-	  false
+	  true
     end
 
   end
