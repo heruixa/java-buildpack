@@ -23,17 +23,33 @@ module JavaBuildpack::Framework
   # Encapsulates the functionality for enabling zero-touch AppDynamics support.
   class ModelerSolutionPublisher < JavaBuildpack::Component::VersionedDependencyComponent
 
+    # Modifies the application's file system.  The component is expected to transform the application's file system in
+    # whatever way is necessary (e.g. downloading files or creating symbolic links) to support the function of the
+    # component.  Status output written to +STDOUT+ is expected as part of this invocation
+	#
+    # @return [void]
     def compile
       download_zip false
     end
 
+    # Modifies the application's runtime configuration. The component is expected to transform members of the +context+
+    # (e.g. +@java_home+, +@java_opts+, etc.) in whatever way is necessary to support the function of the component.
+    #
+    # Container components are also expected to create the command required to run the application.  These components
+    # are expected to read the +context+ values and take them into account when creating the command.
+    #
+    # @return [void, String] components other than containers are not expected to return any value.  Container
+    #                        components are expected to return the command required to run the application.
     def release
 	  java_opts   = @droplet.java_opts
-	  java_opts.add_system_property('java.library.path', "$PWD/#{(@droplet.sandbox + 'bin').relative_path_from(@droplet.root)}")
+	  java_opts.add_system_property('java.library.path', "$PWD/#{(@droplet.sandbox).relative_path_from(@droplet.root)}")
     end
 
     protected
 
+    # Whether or not this component supports this application
+    #
+    # @return [Boolean] whether or not this component supports this application
     def supports?
 	  true
     end
