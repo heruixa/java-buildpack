@@ -23,6 +23,11 @@ module JavaBuildpack::Framework
   # Encapsulates the functionality for enabling zero-touch AppDynamics support.
   class ModelerSolutionPublisher < JavaBuildpack::Component::VersionedDependencyComponent
 
+    def initialize(context)
+      super(context)
+	  ENV['CSP_HOME'] = @droplet.sandbox
+    end  
+  
     # Modifies the application's file system.  The component is expected to transform the application's file system in
     # whatever way is necessary (e.g. downloading files or creating symbolic links) to support the function of the
     # component.  Status output written to +STDOUT+ is expected as part of this invocation
@@ -43,7 +48,6 @@ module JavaBuildpack::Framework
     def release
 	  java_opts   = @droplet.java_opts
 	  java_opts.add_system_property('java.library.path', "$PWD/#{(@droplet.sandbox).relative_path_from(@droplet.root)}")
-	  ENV['CSP_HOME'] = "$PWD/#{(@droplet.sandbox).relative_path_from(@droplet.root)}"
     end
 
     protected
