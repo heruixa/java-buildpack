@@ -43,6 +43,7 @@ module JavaBuildpack::Framework
     def release
 	  java_opts   = @droplet.java_opts
 	  java_opts.add_system_property('java.library.path', "$PWD/#{(@droplet.sandbox).relative_path_from(@droplet.root)}")
+	  ENV['CSP_HOME'] = "$PWD/#{(@droplet.sandbox).relative_path_from(@droplet.root)}"
     end
 
     protected
