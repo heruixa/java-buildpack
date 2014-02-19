@@ -25,7 +25,6 @@ module JavaBuildpack::Framework
 
     def initialize(context)
       super(context)
-	  ENV['CSP_HOME'] = @droplet.sandbox
     end  
   
     # Modifies the application's file system.  The component is expected to transform the application's file system in
