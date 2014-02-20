@@ -60,9 +60,10 @@ module JavaBuildpack::Framework
 	  true
     end
 
+	private
+	
 	def add_to_profiled(string)
 	  FileUtils.mkdir_p "/home/vcap/app/.profile.d"
-
     end
 
     def set_env_default(key, val)
