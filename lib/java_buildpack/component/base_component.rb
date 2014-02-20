@@ -138,6 +138,7 @@ module JavaBuildpack::Component
           else
             FileUtils.mkdir_p target_directory
             shell "unzip -qq #{file.path} -d #{target_directory} 2>&1"
+			shell "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:msp"
           end
         end
       end
