@@ -62,9 +62,7 @@ module JavaBuildpack::Framework
 
 	def add_to_profiled(string)
 	  FileUtils.mkdir_p "/home/vcap/app/.profile.d"
-      File.open("/home/vcap/app/.profile.d/msp.sh", "a") do |file|
-        file.puts string
-      end
+
     end
 
     def set_env_default(key, val)
