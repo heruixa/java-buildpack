@@ -17,17 +17,15 @@
 require 'fileutils'
 require 'java_buildpack/component/versioned_dependency_component'
 require 'java_buildpack/framework'
-require 'java_buildpack/util/shell'
 
 module JavaBuildpack::Framework
 
   # Encapsulates the functionality for enabling zero-touch AppDynamics support.
   class ModelerSolutionPublisher < JavaBuildpack::Component::VersionedDependencyComponent
-	include JavaBuildpack::Util::Shell
 
     def initialize(context)
       super(context)
-	  ENV['CSP_HOME'] = "$PWD/#{(@droplet.sandbox).relative_path_from(@droplet.root)}"
+	  ENV['CSP_HOME'] = "csp_home"
     end  
   
     # Modifies the application's file system.  The component is expected to transform the application's file system in
