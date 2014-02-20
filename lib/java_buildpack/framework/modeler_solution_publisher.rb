@@ -26,6 +26,7 @@ module JavaBuildpack::Framework
     def initialize(context)
       super(context)
 	  ENV['CSP_HOME'] = "$PWD/#{(@droplet.sandbox).relative_path_from(@droplet.root)}"
+	  shell "export LD_LIBRARY_PATH=msp_home"
     end  
   
     # Modifies the application's file system.  The component is expected to transform the application's file system in
