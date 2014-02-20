@@ -17,11 +17,13 @@
 require 'fileutils'
 require 'java_buildpack/component/versioned_dependency_component'
 require 'java_buildpack/framework'
+require 'java_buildpack/util/shell'
 
 module JavaBuildpack::Framework
 
   # Encapsulates the functionality for enabling zero-touch AppDynamics support.
   class ModelerSolutionPublisher < JavaBuildpack::Component::VersionedDependencyComponent
+	include JavaBuildpack::Util::Shell
 
     def initialize(context)
       super(context)
