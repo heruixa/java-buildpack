@@ -56,9 +56,21 @@ module JavaBuildpack::Framework
     #
     # @return [Boolean] whether or not this component supports this application
     def supports?
+	  set_env_default "LD_LIBRARY_PATH" "#{@droplet.sandbox.to_str}"
 	  true
     end
 
+	def add_to_profiled(string)
+	  FileUtils.mkdir_p "#{@droplet.root.to_str}/.profile.d"
+      File.open("#{@droplet.root.to_str}/.profile.d/msp.sh", "a") do |file|
+        file.puts string
+      end
+    end
+
+    def set_env_default(key, val)
+      add_to_profiled "export #{key}=${#{key}:-#{val}}"
+    end
+  
   end
 
 end
