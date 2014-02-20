@@ -35,7 +35,7 @@ module JavaBuildpack::Framework
     # @return [void]
     def compile
       download_zip false
-	  set_env_default "LD_LIBRARY_PATH" "#{@droplet.sandbox.cleanpath.to_s}"
+	  set_env_default "LD_LIBRARY_PATH" "/home/vcap/app/msp"
     end
 
     # Modifies the application's runtime configuration. The component is expected to transform members of the +context+
@@ -61,8 +61,8 @@ module JavaBuildpack::Framework
     end
 
 	def add_to_profiled(string)
-	  FileUtils.mkdir_p "#{@droplet.root.cleanpath.to_s}/.profile.d"
-      File.open("#{@droplet.root.cleanpath.to_s}/.profile.d/msp.sh", "a") do |file|
+	  FileUtils.mkdir_p "/home/vcap/app/.profile.d"
+      File.open("/home/vcap/app/.profile.d/msp.sh", "a") do |file|
         file.puts string
       end
     end
