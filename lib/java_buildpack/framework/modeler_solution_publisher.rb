@@ -63,7 +63,8 @@ module JavaBuildpack::Framework
 	private
 	
 	def add_to_profiled(string)
-	  FileUtils.mkdir_p "/home/vcap/app/.profile.d"
+	  build_path = @droplet.root.cleanpath.to_s
+	  FileUtils.mkdir_p "#{build_path}/.profile.d"
     end
 
     def set_env_default(key, val)
