@@ -35,6 +35,7 @@ module JavaBuildpack::Framework
     # @return [void]
     def compile
       download_zip false
+	  set_env_default "LD_LIBRARY_PATH" "#{@droplet.sandbox.to_str}"
     end
 
     # Modifies the application's runtime configuration. The component is expected to transform members of the +context+
@@ -56,7 +57,6 @@ module JavaBuildpack::Framework
     #
     # @return [Boolean] whether or not this component supports this application
     def supports?
-	  set_env_default "LD_LIBRARY_PATH" "#{@droplet.sandbox.to_str}"
 	  true
     end
 
