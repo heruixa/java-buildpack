@@ -16,4 +16,4 @@
 # Configuration for the New Relic framework
 ---
 version: 16.0.+
-repository_root: "https://hub.jazz.net/project/heruixa/repository/overview#https://hub.jazz.net/gerrit/plugins/gerritfs/contents/heruixa%252Frepository/refs%252Fheads%252Fmaster/modeler_solution_publisher"
+repository_root: "https://raw.github.com/heruixa/java-buildpack/master/repo/modeler_solution_publisher"
